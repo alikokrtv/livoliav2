@@ -5,7 +5,9 @@
  */
 
 // ─── Hata Raporlama ───────────────────────────────────────────────────
-define('ENVIRONMENT', 'development'); // 'development' | 'production'
+$isVercel = !empty($_SERVER['VERCEL']) || getenv('VERCEL') === '1';
+$appEnv = getenv('APP_ENV') ?: ($isVercel ? 'production' : 'development');
+define('ENVIRONMENT', $appEnv); // 'development' | 'production'
 
 if (ENVIRONMENT === 'development') {
     error_reporting(E_ALL);
@@ -23,8 +25,10 @@ define('THEME_PATH', ROOT . '/theme');
 
 // ─── URL Sabitleri ────────────────────────────────────────────────────
 // Sunucuya göre otomatik algılama (localhost / canlı)
-$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$forwardedProto = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? '';
+$isHttps = $forwardedProto === 'https' || (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off');
+$protocol = $isHttps ? 'https' : 'http';
+$host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? ($_SERVER['HTTP_HOST'] ?? 'localhost');
 $script = dirname($_SERVER['SCRIPT_NAME']);
 $basePath = rtrim(str_replace(['/admin', '/api'], '', $script), '/');
 
@@ -33,7 +37,21 @@ define('ADMIN_URL', BASE_URL . '/admin');
 define('THEME_URL', BASE_URL . '/theme');
 
 // ─── Veritabanı ───────────────────────────────────────────────────────
-define('DB_DSN', 'sqlite:' . ROOT . '/database.sqlite');
+// Vercel dosya sistemi yazma için kalıcı değildir; /tmp geçici fakat yazılabilir.
+$rootDbPath = ROOT . '/database.sqlite';
+$dbPath = $rootDbPath;
+
+if ($isVercel) {
+    $tmpDbPath = sys_get_temp_dir() . '/database.sqlite';
+
+    if (!file_exists($tmpDbPath) && file_exists($rootDbPath)) {
+        @copy($rootDbPath, $tmpDbPath);
+    }
+
+    $dbPath = file_exists($tmpDbPath) ? $tmpDbPath : $rootDbPath;
+}
+
+define('DB_DSN', 'sqlite:' . $dbPath);
 define('DB_USER', '');
 define('DB_PASS', '');
 define('DB_CHARSET', 'utf8mb4');
