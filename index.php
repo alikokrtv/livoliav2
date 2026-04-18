@@ -92,7 +92,7 @@ include 'inc/header.php';
         <div class="precision-grid">
             <div class="stats-container">
                 <span class="section-label" style="color: var(--c-accent); border-color: rgba(181,154,124,0.3);">ÖLÇEKLİ ÜRETİM</span>
-                <h2 class="editorial-heading gsap-reveal" style="color: #ffffff; font-size: clamp(2.5rem, 4vw, 4rem); margin-top: 2rem; margin-bottom: 3.5rem; line-height: 1.1; letter-spacing: 0.04em;">Endüstriyel Güç,<br>Butik Hassasiyet</h2>
+                <h2 class="editorial-heading gsap-reveal precision-title">Endüstriyel Güç,<br>Butik Hassasiyet</h2>
 
                 <div class="stat-item gsap-reveal">
                     <span class="stat-number">20M+</span>
