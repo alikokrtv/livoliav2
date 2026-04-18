@@ -15,11 +15,11 @@ include 'inc/header.php';
         <div class="hero-overlay"></div>
 
         <div class="hero-content-wrapper">
-            <h1 class="gsap-reveal">THE ART OF<br>WOVEN ELEGANCE</h1>
-            <p class="gsap-reveal">Global pazar için tasarlanmış, kusursuz fason üretim ve imza koleksiyonlar.</p>
+            <h1 class="gsap-reveal">LIVOLIA<br>HOME TEXTILES</h1>
+            <p class="gsap-reveal">Modern ev tekstili koleksiyonları ve butik üretim yaklaşımıyla markalara çözüm sunuyoruz.</p>
             <div class="hero-explore gsap-reveal">
-                <span class="explore-line"></span>
-                <a href="#koleksiyon">KEŞFET</a>
+                <a href="#koleksiyon">KOLEKSİYONLARI GÖR</a>
+                <a href="contact.php" class="hero-cta-secondary">PARTNER OL</a>
             </div>
         </div>
     </section>
@@ -28,10 +28,10 @@ include 'inc/header.php';
     <section class="editorial-statement" id="about">
         <div class="statement-container">
             <span class="section-label text-reveal">VİZYONUMUZ</span>
-            <h2 class="massive-text gsap-reveal">Mükemmellik bir standart değil, başlangıç noktamızdır. Biz sadece
-                kumaş üretmiyoruz; küresel markalar için zamansız değerler dokuyoruz.</h2>
+            <h2 class="massive-text gsap-reveal">Kaliteyi tasarımla birleştirerek,
+                koleksiyondan üretime kadar markalara uçtan uca değer sunuyoruz.</h2>
             <div class="statement-meta gsap-reveal">
-                <p>— LIVOLIA TEKSTİL, EST. 1994</p>
+                <p>— LIVOLIA HOME TEXTILES</p>
             </div>
         </div>
     </section>
@@ -42,17 +42,17 @@ include 'inc/header.php';
             <div class="value-item gsap-reveal">
                 <span class="value-num">01</span>
                 <h4>SÜRDÜRÜLEBİLİRLİK</h4>
-                <p>En modern geri dönüşüm teknolojileri ve çevre dostu üretim süreçleriyle yarını bugün dokuyoruz.</p>
+                <p>Çevre dostu üretim yaklaşımı ve verimli süreçlerle uzun vadeli değer üretiyoruz.</p>
             </div>
             <div class="value-item gsap-reveal">
                 <span class="value-num">02</span>
                 <h4>KİŞİSELLEŞTİRME</h4>
-                <p>Markanızın ruhuna uygun, size özel desen ve doku çalışmalarıyla butik bir yaklaşım sunuyoruz.</p>
+                <p>Markanızın kimliğine uygun özel desen, doku ve ürün geliştirme desteği sunuyoruz.</p>
             </div>
             <div class="value-item gsap-reveal">
                 <span class="value-num">03</span>
                 <h4>KÜRESEL ERİŞİM</h4>
-                <p>Bursa'dan dünyaya uzanan lojistik ağımızla, lüks segmentin ihtiyaçlarına zamanında yanıt veriyoruz.</p>
+                <p>Bursa merkezli üretim gücümüzle global pazarlara zamanında ve istikrarlı teslimat sağlıyoruz.</p>
             </div>
         </div>
     </section>
@@ -65,9 +65,9 @@ include 'inc/header.php';
             </div>
             <div class="showcase-text">
                 <span class="section-label">01 // KUMAŞ</span>
-                <h3 class="editorial-heading gsap-reveal">Ustalıkla<br>Dokunmuş</h3>
-                <p class="gsap-reveal">Kusursuz dokuma teknikleri ve iplik seçimleriyle hayat bulan koleksiyonlarımız, lüksün dokunulabilir halini sunuyor. Modern teknolojiyi geleneksel zanaatla harmanlayarak global markaların özel tasarımları için en yüksek standartları sağlıyoruz.</p>
-                <a href="contact.php" class="link-arrow gsap-reveal">Detaylı Bilgi Alın</a>
+                <h3 class="editorial-heading gsap-reveal">Nitelikli<br>Kumaş Koleksiyonları</h3>
+                <p class="gsap-reveal">Farklı segmentlere uygun kumaş koleksiyonlarımız; tasarım esnekliği, kalite standardı ve sürdürülebilir üretim prensibiyle hazırlanır.</p>
+                <a href="contact.php" class="link-arrow gsap-reveal">KATALOG TALEP ET</a>
             </div>
         </div>
     </section>
@@ -80,9 +80,9 @@ include 'inc/header.php';
             </div>
             <div class="showcase-text">
                 <span class="section-label">02 // PERDE</span>
-                <h3 class="editorial-heading gsap-reveal">Işığa<br>Yön Verin</h3>
-                <p class="gsap-reveal">Kusursuz dökümü ve zamansız desenleri ile yaşam alanlarınıza derinlik katan perdelik kumaşlarımız, fonksiyonelliği ve estetiği bir araya getiriyor. Işığın gücünü lüks bir dokunuşla kontrol edin ve mekana imzanızı bırakın.</p>
-                <a href="contact.php" class="link-arrow gsap-reveal">Kataloğu İnceleyin</a>
+                <h3 class="editorial-heading gsap-reveal">Perdelik Ürünlerde<br>Güvenilir Üretim</h3>
+                <p class="gsap-reveal">Perdelik ürün grubunda estetik, dayanıklılık ve fonksiyonelliği bir araya getiriyor; proje ve marka ihtiyaçlarına göre üretim planlıyoruz.</p>
+                <a href="contact.php" class="link-arrow gsap-reveal">TEKLİF AL</a>
             </div>
         </div>
     </section>
@@ -95,20 +95,20 @@ include 'inc/header.php';
                 <h2 class="editorial-heading gsap-reveal precision-title">Endüstriyel Güç,<br>Butik Hassasiyet</h2>
 
                 <div class="stat-item gsap-reveal">
-                    <span class="stat-number">20M+</span>
-                    <span class="stat-label">Yıllık Kapasite (m²)</span>
+                    <span class="stat-number">Yeni</span>
+                    <span class="stat-label">Marka Yaklaşımı</span>
                 </div>
                 <div class="stat-item gsap-reveal">
-                    <span class="stat-number">50+</span>
-                    <span class="stat-label">İhracat Ülkesi</span>
+                    <span class="stat-number">Butik</span>
+                    <span class="stat-label">Üretim Modeli</span>
                 </div>
                 <div class="stat-item gsap-reveal">
-                    <span class="stat-number">%100</span>
-                    <span class="stat-label">Özelleştirilebilir Üretim</span>
+                    <span class="stat-number">Esnek</span>
+                    <span class="stat-label">Koleksiyon Geliştirme</span>
                 </div>
                 <div class="stat-item gsap-reveal">
-                    <span class="stat-number">30+</span>
-                    <span class="stat-label">Yıl Sektör Deneyimi</span>
+                    <span class="stat-number">Net</span>
+                    <span class="stat-label">İletişim ve Süreç</span>
                 </div>
             </div>
             <div class="precision-image parallax-container">
@@ -168,10 +168,10 @@ include 'inc/header.php';
             <div class="newsletter-content">
                 <span class="section-label text-reveal">KOLEKSİYON HABERLERİ</span>
                 <h2 class="editorial-heading gsap-reveal">Livolia Dünyasını Keşfedin</h2>
-                <p class="gsap-reveal">Yeni koleksiyonlar, özel tasarımlar ve sektörel trendlerden ilk siz haberdar olun.</p>
+                <p class="gsap-reveal">Yeni koleksiyonlar, üretim güncellemeleri ve B2B iş birlikleri için ekibimizle bağlantıda kalın.</p>
                 <form class="newsletter-form gsap-reveal" id="nlForm">
-                    <input type="email" name="email" placeholder="E-Posta Adresiniz" required>
-                    <button type="submit" id="nlBtn">KAYDOL</button>
+                    <input type="email" name="email" placeholder="Kurumsal e-posta adresiniz" required>
+                    <button type="submit" id="nlBtn">GÖNDER</button>
                 </form>
                 <div id="nlStatus" style="margin-top:12px;font-size:0.78rem;letter-spacing:1px;display:none"></div>
             </div>

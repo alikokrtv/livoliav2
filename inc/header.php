@@ -41,7 +41,10 @@ $activePage = $activePage ?? '';
 
     <header class="main-nav" id="mainNav">
         <div class="nav-container">
-            <a href="<?= BASE_URL ?>" class="nav-brand">LIVOLIA</a>
+            <a href="<?= BASE_URL ?>" class="nav-brand">
+                LIVOLIA
+                <span class="nav-brand-sub">HOME TEXTILES</span>
+            </a>
 
             <nav class="nav-menu" id="navMenu">
                 <div class="nav-dropdown">

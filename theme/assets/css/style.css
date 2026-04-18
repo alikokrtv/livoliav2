@@ -130,10 +130,23 @@ h1, h2, h3, h4, .massive-text {
 .nav-brand {
   font-family: var(--font-display);
   font-size: 30px;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.18em;
   color: white;
   transition: color 0.5s;
   text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 1;
+  gap: 7px;
+}
+
+.nav-brand-sub {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.38em;
+  font-weight: 500;
+  opacity: 0.82;
+  text-transform: uppercase;
 }
 
 .main-nav.scrolled .nav-brand {
@@ -267,6 +280,7 @@ section {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 .explore-line {
@@ -276,13 +290,16 @@ section {
 }
 
 .hero-explore a {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.2em;
   color: white;
   text-transform: uppercase;
   position: relative;
-  padding: 5px 0;
+  padding: 12px 22px;
+  border: 1px solid rgba(255,255,255,0.42);
+  border-radius: 36px;
+  background: rgba(255,255,255,0.04);
 }
 
 .hero-explore a::after {
@@ -298,6 +315,15 @@ section {
 
 .hero-explore a:hover::after {
   width: 100%;
+}
+
+.hero-cta-secondary {
+  background: transparent !important;
+  border-color: rgba(255,255,255,0.55) !important;
+}
+
+.hero-cta-secondary:hover {
+  background: rgba(255,255,255,0.12) !important;
 }
 
 
@@ -1093,6 +1119,15 @@ section {
 @media (max-width: 768px) {
   :root { --header-height: 80px; }
   .hero-content-wrapper h1 { font-size: 3.5rem; }
+  .nav-brand {
+    font-size: 22px;
+    letter-spacing: 0.12em;
+    gap: 5px;
+  }
+  .nav-brand-sub {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+  }
   .two-col-grid { grid-template-columns: 1fr; }
   .collections-grid { grid-template-columns: 1fr; }
   .process-grid { grid-template-columns: 1fr; }
