@@ -5,9 +5,9 @@
     }
   },
   "routes": [
-    { "handle": "filesystem" },
     { "src": "/theme/(.*)", "dest": "/theme/$1" },
     { "src": "/admin/assets/(.*)", "dest": "/admin/assets/$1" },
+    { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|webp|ico|woff|woff2|ttf|eot|map|txt|xml))", "dest": "/$1" },
     { "src": "/(.*)", "dest": "/api/index.php" }
   ]
 }
