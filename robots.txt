@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /inc/
+Disallow: /migrate.php
+Disallow: /install_sqlite.php
+Disallow: /reset_admin.php
+Disallow: /newsletter_subscribe.php
+Disallow: /contact_submit.php
+
+Sitemap: https://www.livolia.com.tr/sitemap.php

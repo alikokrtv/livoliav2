@@ -1,0 +1,17 @@
+# XAMPP & OS
+.DS_Store
+Thumbs.db
+error_log
+access_log
+*.log
+
+# Git
+.git/
+
+# Node (just in case)
+node_modules/
+
+# Ignore SQLite session/journal files but keep the DB
+*.sqlite-journal
+*.sqlite-shm
+*.sqlite-wal

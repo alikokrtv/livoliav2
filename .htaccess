@@ -1,0 +1,14 @@
+Options -Indexes
+RewriteEngine On
+
+# Statik dosyalara dokunma
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Admin panelini kendi .htaccess'ine bırak
+RewriteCond %{REQUEST_URI} ^/admin [NC]
+RewriteRule ^ - [L]
+
+# Tüm public istekleri index.php'ye yönlendir
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
