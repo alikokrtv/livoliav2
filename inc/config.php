@@ -26,7 +26,7 @@ define('THEME_PATH', ROOT . '/theme');
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
 $script = dirname($_SERVER['SCRIPT_NAME']);
-$basePath = rtrim(str_replace('/admin', '', $script), '/');
+$basePath = rtrim(str_replace(['/admin', '/api'], '', $script), '/');
 
 define('BASE_URL', $protocol . '://' . $host . $basePath);
 define('ADMIN_URL', BASE_URL . '/admin');
