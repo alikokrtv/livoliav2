@@ -4,9 +4,7 @@
       "runtime": "vercel-php@0.7.2"
     }
   },
-  "routes": [
-    { "src": "/theme/(.*)", "dest": "/theme/$1" },
-    { "src": "/admin/assets/(.*)", "dest": "/admin/assets/$1" },
-    { "src": "/(.*)", "dest": "/api/index.php" }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index.php" }
   ]
 }
