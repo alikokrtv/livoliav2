@@ -17,7 +17,13 @@
     </a>
 
     <footer class="luxury-footer" id="iletisim">
-        <h2 class="huge-logo">LIVOLIA</h2>
+        <div class="footer-intro">
+            <h3>LIVOLIA TEKSTİL</h3>
+            <p>
+                Premium ev tekstili koleksiyonları ve fason üretim çözümleriyle,
+                markalara tasarımdan sevkiyata kadar uçtan uca destek sağlıyoruz.
+            </p>
+        </div>
         <div class="footer-main">
             <div class="footer-col" style="flex: 2;">
                 <h5>İLETİŞİM</h5>
@@ -54,7 +60,7 @@
             </div>
         </div>
         <div style="text-align:center;padding:30px 6vw;border-top:1px solid rgba(0,0,0,0.07);margin-top:40px">
-            <small style="color:rgba(0,0,0,0.45);font-size:.72rem;letter-spacing:2px">
+            <small style="color:rgba(0,0,0,0.56);font-size:.88rem;letter-spacing:1.4px">
                 &copy; <?= date('Y') ?> LIVOLIA TEKSTİL — TÜM HAKLARI SAKLIDIR
             </small>
         </div>

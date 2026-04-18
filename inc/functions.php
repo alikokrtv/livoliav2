@@ -122,3 +122,34 @@ function excerpt(string $text, int $length = 150): string
         return $text;
     return mb_substr($text, 0, $length) . '...';
 }
+
+/**
+ * Blog görsel yolunu güvenli şekilde çözer.
+ * DB'de yalnız dosya adı, göreli yol veya tam URL saklanmış olabilir.
+ */
+function blog_image_url(?string $image): ?string
+{
+    $image = trim((string) $image);
+    if ($image === '') {
+        return null;
+    }
+
+    if (preg_match('~^(https?:)?//~i', $image)) {
+        return $image;
+    }
+
+    $normalized = ltrim(str_replace('\\', '/', $image), '/');
+
+    $candidates = [
+        ['fs' => ROOT . '/theme/assets/img/blog/' . $normalized, 'url' => THEME_URL . '/assets/img/blog/' . rawurlencode(basename($normalized))],
+        ['fs' => ROOT . '/' . $normalized, 'url' => BASE_URL . '/' . $normalized],
+    ];
+
+    foreach ($candidates as $candidate) {
+        if (is_file($candidate['fs'])) {
+            return $candidate['url'];
+        }
+    }
+
+    return null;
+}

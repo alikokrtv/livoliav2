@@ -41,7 +41,8 @@ body {
   font-family: var(--font-body);
   color: var(--c-dark);
   background-color: var(--c-light);
-  line-height: 1.6;
+  font-size: 17px;
+  line-height: 1.75;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
   cursor: none;
@@ -146,7 +147,7 @@ h1, h2, h3, h4, .massive-text {
 }
 
 .nav-link {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   letter-spacing: 0.2em;
   color: white;
@@ -178,7 +179,7 @@ h1, h2, h3, h4, .massive-text {
 .nav-btn {
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: 13px 30px;
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.2em;
   border-radius: 50px;
@@ -312,7 +313,7 @@ section {
 }
 
 .section-label {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.35em;
   color: var(--c-accent);
   margin-bottom: 2rem;
@@ -333,7 +334,7 @@ section {
 
 .statement-meta {
   margin-top: 4rem;
-  font-size: 12px;
+  font-size: 14px;
   letter-spacing: 0.25em;
   color: var(--c-dark);
   font-weight: 600;
@@ -382,8 +383,8 @@ section {
 }
 
 .showcase-text p {
-  font-size: 1.05rem;
-  font-weight: 300;
+  font-size: 1.12rem;
+  font-weight: 400;
   margin-bottom: 3rem;
   color: #444;
   max-width: 480px;
@@ -394,7 +395,7 @@ section {
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.2em;
   font-weight: 600;
   text-transform: uppercase;
@@ -445,7 +446,7 @@ section {
 }
 
 .stat-label {
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: rgba(255,255,255,0.7);
@@ -510,7 +511,7 @@ section {
 /* Footer Evolution */
 .luxury-footer {
   background: white;
-  padding: 10vw 5% 4vw;
+  padding: 6vw 5% 3vw;
   border-top: 1px solid var(--c-gray-border);
 }
 
@@ -523,6 +524,24 @@ section {
   letter-spacing: 0.05em;
 }
 
+.footer-intro {
+  max-width: 760px;
+  margin-bottom: 2.5rem;
+}
+
+.footer-intro h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  letter-spacing: 0.08em;
+  margin-bottom: 0.8rem;
+}
+
+.footer-intro p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.75;
+}
+
 .footer-main {
   display: flex;
   justify-content: space-between;
@@ -533,7 +552,7 @@ section {
 }
 
 .footer-col h5 {
-  font-size: 13px;
+  font-size: 15px;
   letter-spacing: 0.3em;
   color: var(--c-accent);
   margin-bottom: 2rem;
@@ -548,10 +567,11 @@ section {
 }
 
 .footer-link {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--c-gray-text);
+  font-size: 16px;
+  font-weight: 500;
+  color: #303030;
   transition: color 0.3s;
+  line-height: 1.7;
 }
 
 .footer-link:hover {
@@ -592,7 +612,7 @@ section {
 }
 
 .value-item h4 {
-  font-size: 13px;
+  font-size: 17px;
   letter-spacing: 0.15em;
   margin-bottom: 20px;
   color: var(--c-dark);
@@ -600,8 +620,8 @@ section {
 }
 
 .value-item p {
-  font-size: 14px;
-  color: #444;
+  font-size: 16px;
+  color: #2f2f2f;
   line-height: 1.85;
 }
 
@@ -641,8 +661,8 @@ section {
 }
 
 .process-step p {
-  font-size: 15px;
-  color: #333;
+  font-size: 16px;
+  color: #222;
   line-height: 1.8;
   font-weight: 400;
 }
@@ -761,7 +781,7 @@ section {
 .nav-dropdown-menu a {
   display: block;
   padding: 11px 24px;
-  font-size: 11px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   font-weight: 500;
   color: var(--c-gray-text);
@@ -895,8 +915,8 @@ section {
 }
 
 .collection-card-overlay p {
-  font-size: 12px;
-  opacity: 0.8;
+  font-size: 14px;
+  opacity: 0.9;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -964,16 +984,16 @@ section {
 }
 
 .mission-card h3 {
-  font-size: 1.2rem;
+  font-size: 1.35rem;
   letter-spacing: 0.15em;
   margin-bottom: 1.5rem;
   color: var(--c-accent);
 }
 
 .mission-card p {
-  font-size: 1rem;
+  font-size: 1.08rem;
   line-height: 1.9;
-  color: var(--c-gray-text);
+  color: #2f2f2f;
 }
 
 /* ── Team Section ── */

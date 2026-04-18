@@ -1,6 +1,7 @@
 <?php
 require_once 'inc/config.php';
 require_once 'inc/Database.php';
+require_once 'inc/functions.php';
 
 $db   = Database::getInstance();
 $slug = trim($_GET['slug'] ?? '');
@@ -35,6 +36,7 @@ $related = $db->fetchAll(
 
 $metaTitle = htmlspecialchars($post['title'] . ' | ' . SITE_TITLE);
 $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
+$postImageUrl = blog_image_url($post['image'] ?? null);
 ?>
 <!DOCTYPE html>
 <html lang="tr">
@@ -50,8 +52,8 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
     <meta property="og:description" content="<?= htmlspecialchars($metaDesc) ?>">
     <meta property="og:type" content="article">
     <meta property="og:url" content="<?= BASE_URL ?>/blog-detail.php?slug=<?= urlencode($slug) ?>">
-    <?php if ($post['image']): ?>
-        <meta property="og:image" content="<?= THEME_URL ?>/assets/img/blog/<?= htmlspecialchars($post['image']) ?>">
+    <?php if ($postImageUrl): ?>
+        <meta property="og:image" content="<?= htmlspecialchars($postImageUrl) ?>">
     <?php endif; ?>
 
     <!-- Twitter Card -->
@@ -110,7 +112,7 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
         }
 
         .post-cat {
-            font-size: 0.62rem;
+            font-size: 0.78rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #b59a7c;
@@ -118,8 +120,8 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
         }
 
         .post-date {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.45);
+            font-size: 0.84rem;
+            color: rgba(255,255,255,0.72);
             letter-spacing: 1px;
         }
 
@@ -149,9 +151,9 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
         /* Content */
         .post-content {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.925rem;
+            font-size: 1.06rem;
             line-height: 1.85;
-            color: #2a2a2a;
+            color: #1f1f1f;
         }
 
         .post-content h2,
@@ -209,17 +211,17 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
         }
 
         .post-share span {
-            font-size: 0.68rem;
+            font-size: 0.8rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #aaa;
+            color: #666;
         }
 
         .share-btn {
-            font-size: 0.68rem;
+            font-size: 0.8rem;
             letter-spacing: 1.5px;
             text-transform: uppercase;
-            color: #555;
+            color: #333;
             text-decoration: none;
             padding: 6px 14px;
             border: 1px solid rgba(0,0,0,0.12);
@@ -237,7 +239,7 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
 
         .post-sidebar h4 {
             font-family: 'Cinzel', serif;
-            font-size: 0.75rem;
+            font-size: 0.9rem;
             letter-spacing: 3px;
             text-transform: uppercase;
             color: #0a0a0a;
@@ -283,7 +285,7 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
 
         .related-item a {
             font-family: 'Cinzel', serif;
-            font-size: 0.78rem;
+            font-size: 0.9rem;
             color: #0a0a0a;
             text-decoration: none;
             line-height: 1.4;
@@ -294,8 +296,8 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
         .related-item a:hover { color: #b59a7c; }
 
         .related-item small {
-            font-size: 0.65rem;
-            color: #aaa;
+            font-size: 0.76rem;
+            color: #666;
         }
 
         /* Back link */
@@ -303,10 +305,10 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.7rem;
+            font-size: 0.84rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #888;
+            color: #555;
             text-decoration: none;
             margin-bottom: 36px;
             transition: color 0.2s;
@@ -338,8 +340,8 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
 
     <!-- Post Hero -->
     <section class="post-hero">
-        <?php if ($post['image']): ?>
-            <img src="<?= THEME_URL ?>/assets/img/blog/<?= htmlspecialchars($post['image']) ?>"
+        <?php if ($postImageUrl): ?>
+            <img src="<?= htmlspecialchars($postImageUrl) ?>"
                  alt="<?= htmlspecialchars($post['title']) ?>" class="post-hero-bg">
         <?php else: ?>
             <div class="post-hero-bg-fallback"></div>
@@ -387,8 +389,9 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
                     <h4>İlgili Yazılar</h4>
                     <?php foreach ($related as $r): ?>
                         <div class="related-item">
-                            <?php if ($r['image']): ?>
-                                <img src="<?= THEME_URL ?>/assets/img/blog/<?= htmlspecialchars($r['image']) ?>"
+                            <?php $relatedImageUrl = blog_image_url($r['image'] ?? null); ?>
+                            <?php if ($relatedImageUrl): ?>
+                                <img src="<?= htmlspecialchars($relatedImageUrl) ?>"
                                      alt="<?= htmlspecialchars($r['title']) ?>">
                             <?php else: ?>
                                 <div class="related-item-placeholder"><span>LVL</span></div>
@@ -421,6 +424,10 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
     </section>
 
     <footer class="luxury-footer" style="padding-top:60px">
+        <div class="footer-intro" style="max-width:640px;margin-bottom:28px">
+            <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;letter-spacing:.08em;margin-bottom:10px">LIVOLIA TEKSTİL</h3>
+            <p style="font-size:1rem;color:#3b3b3b;line-height:1.75">Yeni koleksiyonlar, üretim yaklaşımımız ve sektörel gelişmeler için bizimle bağlantıda kalın.</p>
+        </div>
         <div class="footer-main">
             <div class="footer-col" style="flex:2">
                 <h5>İLETİŞİM</h5>
@@ -444,8 +451,8 @@ $metaDesc  = mb_substr(strip_tags($post['content'] ?? ''), 0, 160);
                 </div>
             </div>
         </div>
-        <div style="text-align:center;padding:30px 6vw;border-top:1px solid rgba(255,255,255,0.06);margin-top:40px">
-            <small style="color:rgba(255,255,255,0.2);font-size:.68rem;letter-spacing:2px">
+        <div style="text-align:center;padding:30px 6vw;border-top:1px solid rgba(0,0,0,0.08);margin-top:40px">
+            <small style="color:rgba(0,0,0,0.56);font-size:.86rem;letter-spacing:1.6px">
                 &copy; <?= date('Y') ?> LIVOLIA TEKSTİL — TÜM HAKLARI SAKLIDIR
             </small>
         </div>

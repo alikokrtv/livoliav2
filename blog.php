@@ -1,6 +1,7 @@
 <?php
 require_once 'inc/config.php';
 require_once 'inc/Database.php';
+require_once 'inc/functions.php';
 
 $db = Database::getInstance();
 
@@ -61,11 +62,12 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
 
         .blog-hero-content span.label {
             display: block;
-            font-size: 0.65rem;
+            font-size: 0.82rem;
             letter-spacing: 4px;
             text-transform: uppercase;
             color: #b59a7c;
             margin-bottom: 16px;
+            font-weight: 600;
         }
 
         .blog-hero-content h1 {
@@ -89,14 +91,15 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
         }
 
         .blog-filter a {
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: #888;
+            color: #4b4b4b;
             text-decoration: none;
-            padding: 6px 16px;
+            padding: 10px 16px;
             border: 1px solid rgba(0,0,0,0.1);
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .blog-filter a:hover,
@@ -167,7 +170,7 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
         }
 
         .blog-card-cat {
-            font-size: 0.62rem;
+            font-size: 0.76rem;
             letter-spacing: 2px;
             text-transform: uppercase;
             color: #b59a7c;
@@ -175,13 +178,13 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
         }
 
         .blog-card-date {
-            font-size: 0.68rem;
-            color: #aaa;
+            font-size: 0.82rem;
+            color: #6c6c6c;
         }
 
         .blog-card h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.05rem;
+            font-size: 1.2rem;
             font-weight: 400;
             color: #0a0a0a;
             line-height: 1.4;
@@ -190,7 +193,7 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
         }
 
         .blog-card-link {
-            font-size: 0.68rem;
+            font-size: 0.8rem;
             letter-spacing: 2.5px;
             text-transform: uppercase;
             color: #0a0a0a;
@@ -209,8 +212,8 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
         .blog-empty {
             text-align: center;
             padding: 80px 0;
-            color: #aaa;
-            font-size: 0.9rem;
+            color: #6d6d6d;
+            font-size: 1rem;
             letter-spacing: 0.05em;
         }
 
@@ -229,10 +232,10 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-size: 0.92rem;
             text-decoration: none;
             border: 1px solid rgba(0,0,0,0.1);
-            color: #555;
+            color: #333;
             transition: all 0.2s;
         }
 
@@ -299,8 +302,9 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
                 <?php foreach ($posts as $post): ?>
                     <article class="blog-card">
                         <a href="blog-detail.php?slug=<?= urlencode($post['slug']) ?>">
-                            <?php if ($post['image']): ?>
-                                <img src="<?= THEME_URL ?>/assets/img/blog/<?= htmlspecialchars($post['image']) ?>"
+                            <?php $postImageUrl = blog_image_url($post['image'] ?? null); ?>
+                            <?php if ($postImageUrl): ?>
+                                <img src="<?= htmlspecialchars($postImageUrl) ?>"
                                      alt="<?= htmlspecialchars($post['title']) ?>"
                                      class="blog-card-img"
                                      loading="lazy">
@@ -351,6 +355,10 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
     </section>
 
     <footer class="luxury-footer" style="padding-top:60px">
+        <div class="footer-intro" style="max-width:640px;margin-bottom:28px">
+            <h3 style="font-family:'Cinzel',serif;font-size:1.6rem;letter-spacing:.08em;margin-bottom:10px">LIVOLIA TEKSTİL</h3>
+            <p style="font-size:1rem;color:#3b3b3b;line-height:1.75">Blog yazılarımızla trendleri, üretim içgörülerini ve koleksiyon hikayelerini paylaşıyoruz.</p>
+        </div>
         <div class="footer-main">
             <div class="footer-col" style="flex:2">
                 <h5>İLETİŞİM</h5>
@@ -375,8 +383,8 @@ $categories = $db->fetchAll('SELECT id, name FROM blog_categories ORDER BY name'
                 </div>
             </div>
         </div>
-        <div style="text-align:center;padding:30px 6vw;border-top:1px solid rgba(255,255,255,0.06);margin-top:40px">
-            <small style="color:rgba(255,255,255,0.2);font-size:.68rem;letter-spacing:2px">
+        <div style="text-align:center;padding:30px 6vw;border-top:1px solid rgba(0,0,0,0.08);margin-top:40px">
+            <small style="color:rgba(0,0,0,0.56);font-size:.86rem;letter-spacing:1.6px">
                 &copy; <?= date('Y') ?> LIVOLIA TEKSTİL — TÜM HAKLARI SAKLIDIR
             </small>
         </div>
