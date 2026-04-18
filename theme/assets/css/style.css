@@ -533,11 +533,12 @@ section {
 }
 
 .footer-col h5 {
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.3em;
   color: var(--c-accent);
   margin-bottom: 2rem;
   text-transform: uppercase;
+  font-weight: 700;
 }
 
 .footer-links {
@@ -547,8 +548,8 @@ section {
 }
 
 .footer-link {
-  font-size: 13px;
-  font-weight: 300;
+  font-size: 14px;
+  font-weight: 400;
   color: var(--c-gray-text);
   transition: color 0.3s;
 }
@@ -632,16 +633,18 @@ section {
 }
 
 .process-step h5 {
-  font-size: 14px;
-  letter-spacing: 0.2em;
+  font-size: 17px;
+  letter-spacing: 0.1em;
   margin-bottom: 1rem;
   color: var(--c-dark);
+  font-weight: 600;
 }
 
 .process-step p {
-  font-size: 14px;
-  color: #444;
+  font-size: 15px;
+  color: #333;
   line-height: 1.8;
+  font-weight: 400;
 }
 
 /* Newsletter Section */
