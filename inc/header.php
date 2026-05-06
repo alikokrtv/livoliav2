@@ -6,7 +6,7 @@
 $activePage = $activePage ?? '';
 ?>
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="<?= $_COOKIE['lang'] ?? 'tr' ?>">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,14 +34,15 @@ $activePage = $activePage ?? '';
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="<?= THEME_URL ?>/assets/js/i18n.js?v=<?= filemtime(THEME_PATH . '/assets/js/i18n.js') ?>"></script>
     <?= $extraHead ?? '' ?>
 </head>
-<body>
+<body data-i18n-page="<?= $activePage ?>">
     <div class="cursor-dot"></div>
 
     <header class="main-nav" id="mainNav">
         <div class="nav-container">
-            <a href="<?= BASE_URL ?>" class="nav-brand">
+            <a href="<?= BASE_URL ?>" class="nav-brand editorial-heading" style="font-size: 1.8rem; letter-spacing: 0.15em;">
                 LIVOLIA
                 <span class="nav-brand-sub">HOME TEXTILES</span>
             </a>
@@ -49,34 +50,41 @@ $activePage = $activePage ?? '';
             <nav class="nav-menu" id="navMenu">
                 <div class="nav-dropdown">
                     <a href="<?= BASE_URL ?>/koleksiyon.php" class="nav-link <?= $activePage === 'koleksiyon' ? 'active' : '' ?>">
-                        KOLEKSİYON <span class="nav-arrow">▾</span>
+                        <span data-i18n="nav.collection">KOLEKSİYON</span> <span class="nav-arrow">▾</span>
                     </a>
                     <div class="nav-dropdown-menu">
-                        <a href="<?= BASE_URL ?>/koleksiyon.php">Tüm Koleksiyonlar</a>
-                        <a href="<?= BASE_URL ?>/koleksiyon.php?cat=kumas">Kumaşlar</a>
-                        <a href="<?= BASE_URL ?>/koleksiyon.php?cat=perde">Perdeler</a>
-                        <a href="<?= BASE_URL ?>/koleksiyon.php?cat=masa">Masa Örtüleri</a>
-                        <a href="<?= BASE_URL ?>/koleksiyon.php?cat=kirlent">Kırlentler</a>
+                        <a href="<?= BASE_URL ?>/koleksiyon.php" data-i18n="nav.all_collections">Tüm Koleksiyonlar</a>
+                        <a href="<?= BASE_URL ?>/koleksiyon-detay.php?cat=kumas" data-i18n="nav.fabrics">Kumaşlar</a>
+                        <a href="<?= BASE_URL ?>/koleksiyon-detay.php?cat=perde" data-i18n="nav.curtains">Perdeler</a>
+                        <a href="<?= BASE_URL ?>/koleksiyon-detay.php?cat=masa" data-i18n="nav.tablecloths">Masa Örtüleri</a>
+                        <a href="<?= BASE_URL ?>/koleksiyon-detay.php?cat=kirlent" data-i18n="nav.cushions">Kırlentler</a>
                     </div>
                 </div>
 
                 <div class="nav-dropdown">
                     <a href="<?= BASE_URL ?>/hakkimizda.php" class="nav-link <?= $activePage === 'hakkimizda' ? 'active' : '' ?>">
-                        HAKKIMIZDA <span class="nav-arrow">▾</span>
+                        <span data-i18n="nav.about">HAKKIMIZDA</span> <span class="nav-arrow">▾</span>
                     </a>
                     <div class="nav-dropdown-menu">
-                        <a href="<?= BASE_URL ?>/hakkimizda.php">Kurumsal</a>
-                        <a href="<?= BASE_URL ?>/misyon-vizyon.php">Misyon &amp; Vizyon</a>
-                        <a href="<?= BASE_URL ?>/hakkimizda.php#ekip">Ekibimiz</a>
-                        <a href="<?= BASE_URL ?>/hakkimizda.php#sertifikalar">Sertifikalarımız</a>
+                        <a href="<?= BASE_URL ?>/hakkimizda.php" data-i18n="nav.corporate">Kurumsal</a>
+                        <a href="<?= BASE_URL ?>/misyon-vizyon.php" data-i18n="nav.mission">Misyon &amp; Vizyon</a>
                     </div>
                 </div>
 
-                <a href="<?= BASE_URL ?>/#production" class="nav-link">ÜRETİM</a>
+                <a href="<?= BASE_URL ?>/#production" class="nav-link" data-i18n="nav.production">ÜRETİM</a>
 
-                <a href="<?= BASE_URL ?>/blog.php" class="nav-link <?= $activePage === 'blog' ? 'active' : '' ?>">BLOG</a>
+                <a href="<?= BASE_URL ?>/blog.php" class="nav-link <?= $activePage === 'blog' ? 'active' : '' ?>" data-i18n="nav.blog">BLOG</a>
 
-                <a href="<?= BASE_URL ?>/contact.php" class="nav-btn <?= $activePage === 'iletisim' ? 'active' : '' ?>">BİZE ULAŞIN</a>
+                <div class="nav-lang">
+                    <button class="lang-btn <?= ($_COOKIE['lang'] ?? 'en') === 'tr' ? 'active' : '' ?>" onclick="setLanguage('tr')" title="Türkçe">
+                        <img src="https://flagcdn.com/w40/tr.png" alt="TR" width="20">
+                    </button>
+                    <button class="lang-btn <?= ($_COOKIE['lang'] ?? 'en') === 'en' ? 'active' : '' ?>" onclick="setLanguage('en')" title="English">
+                        <img src="https://flagcdn.com/w40/us.png" alt="EN" width="20">
+                    </button>
+                </div>
+
+                <a href="<?= BASE_URL ?>/contact.php" class="nav-btn <?= $activePage === 'iletisim' ? 'active' : '' ?>" data-i18n="nav.contact">BİZE ULAŞIN</a>
             </nav>
 
             <button class="nav-mobile-toggle" id="navMobileToggle" aria-label="Menüyü Aç">
@@ -88,11 +96,28 @@ $activePage = $activePage ?? '';
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobileMenuOverlay">
         <div class="mobile-menu-inner">
-            <a href="<?= BASE_URL ?>/koleksiyon.php" class="mobile-menu-link">Koleksiyon</a>
-            <a href="<?= BASE_URL ?>/hakkimizda.php" class="mobile-menu-link">Hakkımızda</a>
-            <a href="<?= BASE_URL ?>/misyon-vizyon.php" class="mobile-menu-link">Misyon &amp; Vizyon</a>
-            <a href="<?= BASE_URL ?>/#production" class="mobile-menu-link">Üretim</a>
-            <a href="<?= BASE_URL ?>/blog.php" class="mobile-menu-link">Blog</a>
-            <a href="<?= BASE_URL ?>/contact.php" class="mobile-menu-link mobile-menu-cta">Bize Ulaşın</a>
+            <a href="<?= BASE_URL ?>/koleksiyon.php" class="mobile-menu-link" data-i18n="nav.collection">Koleksiyon</a>
+            <a href="<?= BASE_URL ?>/hakkimizda.php" class="mobile-menu-link" data-i18n="nav.about">Hakkımızda</a>
+            <a href="<?= BASE_URL ?>/misyon-vizyon.php" class="mobile-menu-link" data-i18n="nav.mission">Misyon &amp; Vizyon</a>
+            <a href="<?= BASE_URL ?>/#production" class="mobile-menu-link" data-i18n="nav.production">Üretim</a>
+            <a href="<?= BASE_URL ?>/blog.php" class="mobile-menu-link" data-i18n="nav.blog">Blog</a>
+            
+            <div class="mobile-lang-switcher" style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+                <button class="lang-btn" onclick="setLanguage('tr')">
+                    <img src="https://flagcdn.com/w40/tr.png" alt="TR" width="30">
+                </button>
+                <button class="lang-btn" onclick="setLanguage('en')">
+                    <img src="https://flagcdn.com/w40/us.png" alt="EN" width="30">
+                </button>
+            </div>
+
+            <a href="<?= BASE_URL ?>/contact.php" class="mobile-menu-link mobile-menu-cta" data-i18n="nav.contact">Bize Ulaşın</a>
         </div>
     </div>
+
+    <script>
+        function setLanguage(lang) {
+            document.cookie = "lang=" + lang + "; path=/; max-age=" + (60*60*24*30);
+            location.reload();
+        }
+    </script>
